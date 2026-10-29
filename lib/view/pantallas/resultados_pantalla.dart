@@ -15,6 +15,17 @@ class ResultadosPantalla extends StatelessWidget {
       );
     }
 
+    IconData icono = Icons.check_circle;
+    Color colorIcono = Colors.green;
+
+    if (resultado.estado == 'En advertencia') {
+      icono = Icons.warning;
+      colorIcono = Colors.orange;
+    } else if (resultado.estado == 'No habilitado') {
+      icono = Icons.cancel;
+      colorIcono = Colors.red;
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Resultados'),
@@ -24,9 +35,9 @@ class ResultadosPantalla extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            const Icon(
-              Icons.check_circle,
-              color: Colors.blue,
+            Icon(
+              icono,
+              color: colorIcono,
               size: 60,
             ),
             const SizedBox(height: 10),
